@@ -8,36 +8,38 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
+@RequestMapping("/api/foods")
 public class FoodController {
     @Autowired
     FoodService service;
 
     // [GET] /foods
-    @GetMapping("/foods")
+    @GetMapping
     public List<Food> getFoods() {
         return service.getFoods();
     }
 
     // [GET] /foods/:foodId
-    @GetMapping("/foods/{foodId}")
+    @GetMapping("/{foodId}")
     public Food getFoodById(@PathVariable int foodId) {
         return service.getFoodById(foodId);
     }
 
     // [POST] /foods
-    @PostMapping("/foods")
+    @PostMapping
     public void addFood(@RequestBody Food newFood) {
         service.addFood(newFood);
     }
 
     // [PUT] /foods/:id
-    @PutMapping("/foods")
+    @PutMapping
     public void updateFood(@RequestBody Food newFood) {
         service.updateFood(newFood);
     }
 
     // [DELETE] /foods/:foodId
-    @DeleteMapping("/foods/{foodId}")
+    @DeleteMapping("/{foodId}")
     public void deleteFood(@PathVariable int foodId) {
         service.deleteFood(foodId);
     }

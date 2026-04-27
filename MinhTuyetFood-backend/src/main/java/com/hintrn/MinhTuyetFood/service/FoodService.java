@@ -15,9 +15,6 @@ public class FoodService {
     @Autowired
     FoodRepo repo;
 
-//    List<Food> foods = new ArrayList<>(Arrays.asList(
-//            new Food(1, "Mi Xao Gion", 500000),
-//            new Food(2, "Hu Tieu Xao", 500000)));
 
     // [GET] /foods
     public List<Food> getFoods() {
@@ -26,7 +23,7 @@ public class FoodService {
 
     // [GET /foods/:id
     public Food getFoodById(int id) {
-        return repo.findById(id).orElse(new Food(0, "No food", 0));
+        return repo.findById(id).orElse(null);
     }
 
     // [POST] /foods
