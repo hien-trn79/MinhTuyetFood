@@ -14,25 +14,36 @@ public class Food {
     private Integer foodId;
     private String foodName;
     private Integer price;
+    private String foodImage;
 
     public Food() {
         this.foodId = 0;
         this.foodName= "";
         this.price = 0;
+        this.foodImage = "";
     }
 
-    public Food(int foodId, String foodName, int price) {
+    public Food(int foodId, String foodName, int price, String foodImage) {
         this.foodId = foodId;
         this.foodName = foodName;
         this.price = price;
+        this.foodImage = foodImage;
     }
 
-    public int getFoodId() {
+    public Integer getFoodId() {
         return foodId;
     }
 
-    public void setFoodId(int foodId) {
+    public void setFoodId(Integer foodId) {
         this.foodId = foodId;
+    }
+
+    public String getFoodImage() {
+        return foodImage;
+    }
+
+    public void setFoodImage(String foodImage) {
+        this.foodImage = foodImage;
     }
 
     public String getFoodName() {
@@ -43,11 +54,11 @@ public class Food {
         this.foodName = foodName;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
@@ -57,6 +68,7 @@ public class Food {
                 "foodId=" + foodId +
                 ", foodName='" + foodName + '\'' +
                 ", price=" + price +
+                ", foodImage='" + foodImage + '\'' +
                 '}';
     }
 }
