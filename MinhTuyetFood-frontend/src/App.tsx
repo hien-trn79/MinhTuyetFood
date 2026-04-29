@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="page">
       <Headerpage />
-      <main className="page-main container px-5 max-w-5xl bg-white">
+      <main className="page-main container px-5 max-w-6xl m-auto bg-white">
         <Homepage />
       </main>
       <footer className="page-footer">
