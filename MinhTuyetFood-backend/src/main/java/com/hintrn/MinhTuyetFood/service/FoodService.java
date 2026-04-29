@@ -15,7 +15,6 @@ public class FoodService {
     @Autowired
     FoodRepo repo;
 
-
     // [GET] /foods
     public List<Food> getFoods() {
         return repo.findAll();

@@ -1,18 +1,27 @@
 package com.hintrn.MinhTuyetFood.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Data;
 
 @Data
-@Entity
+@Entity(name = "users")
 public class User {
 
     @Id
+    @Column(name = "userId")
     private Integer userId;
-    private String userName, userSubName;
+    @Column(name = "userName")
+    private String userName;
+    @Column(name = "userSubName")
+    private String userSubName;
+    @Column(name = "userBirth")
     private Integer userAge;
-    private String userAddress, userNumberphone;
+    @Column(name = "userAddress")
+    private String userAddress;
+    @Column(name = "userNumberphone")
+    private String userNumberphone;
 
     public User() {
         this.userId = 0;
@@ -32,57 +41,57 @@ public class User {
         this.userNumberphone = userNumberphone;
     }
 
-    public String getStaffAddress() {
+    public String getUserAddress() {
         return userAddress;
     }
 
-    public void setStaffAddress(String userAddress) {
+    public void setUserAddress(String userAddress) {
         this.userAddress = userAddress;
     }
 
-    public Integer getStaffAge() {
+    public Integer getUserAge() {
         return userAge;
     }
 
-    public void setStaffAge(Integer userAge) {
+    public void setUserAge(Integer userAge) {
         this.userAge = userAge;
     }
 
-    public Integer getStaffId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setStaffId(Integer userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
-    public String getStaffName() {
+    public String getUserName() {
         return userName;
     }
 
-    public void setStaffName(String userName) {
+    public void setUserName(String userName) {
         this.userName = userName;
     }
 
-    public String getStaffNumberphone() {
+    public String getUserNumberphone() {
         return userNumberphone;
     }
 
-    public void setStaffNumberphone(String userNumberphone) {
+    public void setUserNumberphone(String userNumberphone) {
         this.userNumberphone = userNumberphone;
     }
 
-    public String getStaffSubName() {
+    public String getUserSubName() {
         return userSubName;
     }
 
-    public void setStaffSubName(String userSubName) {
+    public void setUserSubName(String userSubName) {
         this.userSubName = userSubName;
     }
 
     @Override
     public String toString() {
-        return "Staff{" +
+        return "User{" +
                 "userAddress='" + userAddress + '\'' +
                 ", userId=" + userId +
                 ", userName='" + userName + '\'' +

@@ -1,0 +1,27 @@
+.page {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  grid-template-rows: 60px auto 60px;
+  min-height: 100vh;
+  gap: 10px;
+}
+
+.page-header {
+  grid-area: header;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 2px 4px 4px rgba(1, 73, 23, 0.137);
+}
+
+.page-main {
+  grid-area: main;
+}
+
+.page-footer {
+  grid-area: footer;
+}
