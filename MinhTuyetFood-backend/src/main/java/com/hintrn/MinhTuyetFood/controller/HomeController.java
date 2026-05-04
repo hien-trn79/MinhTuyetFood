@@ -14,6 +14,6 @@ public class HomeController {
 
     @RequestMapping("/about")
     public String introduce() {
-        return "this is a perfect restaurant abotu food. Address: Sa dec City, Dong Thap Province";
+        return "this is a perfect restaurant about food. Address: Sa dec City, Dong Thap Province";
     }
 }

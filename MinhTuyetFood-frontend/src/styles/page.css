@@ -1,0 +1,19 @@
+/* Design Login Page */
+.logo_side {
+  height: 100px;
+  width: 260px;
+  z-index: 10;
+}
+
+.form-input_pwd {
+  padding-right: 32px;
+}
+
+.form-icon_password_toggle {
+  top: 58%;
+  right: 8px;
+}
+
+.form-submit:active {
+  transform: scale(0.98);
+}

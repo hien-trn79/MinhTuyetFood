@@ -17,6 +17,8 @@
   right: 0;
   box-shadow: 2px 4px 4px rgba(1, 73, 23, 0.137);
   z-index: 100;
+  background-color: rgb(0, 187, 0);
+  color: white;
 }
 
 .page-main {

@@ -6,7 +6,8 @@ import lombok.Data;
 import org.springframework.stereotype.Component;
 
 @Data
-@Entity(name = "foods")
+@Entity
+@Table(name = "foods")
 public class Food {
 
     @Id
@@ -75,4 +76,6 @@ public class Food {
                 ", foodImage='" + foodImage + '\'' +
                 '}';
     }
+
+
 }

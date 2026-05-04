@@ -1,20 +1,20 @@
 import "./App.css";
-import Headerpage from "./components/Headerpage";
-import Homepage from "./components/Homepage";
 
+import { Routes, Route } from "react-router-dom";
+
+import MainPage from "./components/MainPage";
+import LoginPage from "./components/LoginPage";
+import About from "./components/layout/About";
+import Homepage from "./components/layout/Homepage";
 function App() {
   return (
-    <div className="page">
-      <Headerpage />
-      <main className="page-main container px-5 max-w-6xl m-auto bg-white">
-        <Homepage />
-      </main>
-      <footer className="page-footer">
-        <p className="footer-text">
-          Copyright © 2025 Minh Tuyết Food. All rights reserved.
-        </p>
-      </footer>
-    </div>
+    <Routes>
+      <Route path="/" element={<MainPage />}>
+        <Route index element={<Homepage />} />
+        <Route path="about" element={<About />} />
+      </Route>
+      <Route path="/login" element={<LoginPage />} />
+    </Routes>
   );
 }
 
