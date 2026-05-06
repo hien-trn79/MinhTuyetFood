@@ -1,27 +1,23 @@
 package com.hintrn.MinhTuyetFood.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity(name = "users")
 public class User {
 
     @Id
-    @Column(name = "userId")
     private Integer userId;
-    @Column(name = "userName")
     private String userName;
-    @Column(name = "userSubName")
     private String userSubName;
-    @Column(name = "userBirth")
     private Integer userAge;
-    @Column(name = "userAddress")
     private String userAddress;
-    @Column(name = "userNumberphone")
-    private String userNumberphone;
+    private String userNumberPhone;
+    private String userImage;
+
 
     public User() {
         this.userId = 0;
@@ -29,16 +25,26 @@ public class User {
         this.userSubName = "";
         this.userAge = 1900;
         this.userAddress = "Address";
-        this.userNumberphone = "123456789";
+        this.userNumberPhone = "123456789";
+        this.userImage = "";
     }
 
-    public User(Integer userId, String userName, String userSubName, Integer userAge, String userAddress, String userNumberphone) {
+    public User(Integer userId, String userName, String userSubName, Integer userAge, String userAddress, String userNumberphone, String userImage) {
         this.userId = userId;
         this.userName = userName;
         this.userSubName = userSubName;
         this.userAge = userAge;
         this.userAddress = userAddress;
-        this.userNumberphone = userNumberphone;
+        this.userNumberPhone = userNumberphone;
+        this.userImage = userImage;
+    }
+
+    public String getUserImage() {
+        return userImage;
+    }
+
+    public void setUserImage(String userImage) {
+        this.userImage = userImage;
     }
 
     public String getUserAddress() {
@@ -74,11 +80,11 @@ public class User {
     }
 
     public String getUserNumberphone() {
-        return userNumberphone;
+        return userNumberPhone;
     }
 
     public void setUserNumberphone(String userNumberphone) {
-        this.userNumberphone = userNumberphone;
+        this.userNumberPhone = userNumberphone;
     }
 
     public String getUserSubName() {
@@ -97,7 +103,8 @@ public class User {
                 ", userName='" + userName + '\'' +
                 ", userSubName='" + userSubName + '\'' +
                 ", userAge=" + userAge +
-                ", userNumberphone='" + userNumberphone + '\'' +
+                ", userNumberphone='" + userNumberPhone + '\'' +
+                ", userImage='" + userImage + '\'' +
                 '}';
     }
 }

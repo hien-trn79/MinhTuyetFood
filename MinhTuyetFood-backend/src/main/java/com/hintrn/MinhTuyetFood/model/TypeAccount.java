@@ -1,52 +1,52 @@
 package com.hintrn.MinhTuyetFood.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Entity(name = "typeaccount")
+@Entity(name = "typeAccounts")
 public class TypeAccount {
 
     @Id
-    @Column(name = "typeId")
-    private int typeId;
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int typeAccountId;
     @Column(name = "typeName")
-    private String typeName;
+    private String typeAccountName;
+
 
     public TypeAccount() {
-        this.typeId = -1;
-        this.typeName = "";
+        this.typeAccountId = -1;
+        this.typeAccountName = "";
     }
 
     public TypeAccount(int typeId, String typeName) {
-        this.typeId = typeId;
-        this.typeName = typeName;
+        this.typeAccountId = typeId;
+        this.typeAccountName = typeName;
     }
 
     public int getTypeId() {
-        return typeId;
+        return typeAccountId;
     }
 
     public void setTypeId(int typeId) {
-        this.typeId = typeId;
+        this.typeAccountId = typeId;
     }
 
     public String getTypeName() {
-        return typeName;
+        return typeAccountName;
     }
 
     public void setTypeName(String typeName) {
-        this.typeName = typeName;
+        this.typeAccountName = typeName;
     }
 
     @Override
     public String toString() {
         return "TypeAccount{" +
-                "typeId=" + typeId +
-                ", typeName='" + typeName + '\'' +
+                "typeId=" + typeAccountId +
+                ", typeName='" + typeAccountName + '\'' +
                 '}';
     }
 }

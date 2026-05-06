@@ -1,3 +1,5 @@
+import { useRef, useState } from "react";
+import TypeBox from "./TypeBox";
 interface MenuItemProps {
   id: number;
   name: string;
@@ -13,31 +15,33 @@ export default function MenuItem({
   price,
   imageUrl,
 }: MenuItemProps) {
-  const getFoodById = async (id: number) => {
-    try {
-      const response = await fetch(`http://localhost:8080/api/foods/${id}`);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const food = await response.json();
-      return food;
-    } catch (error) {
-      console.error(`Error fetching food with id ${id}:`, error);
-      throw error;
-    }
-  };
+  const [showtTypeBox, setShowTypeBox] = useState(false);
+  const [selectedFoodId, setSelectedFoodId] = useState<number>(-1);
 
   const handleSubmit = async (id: number) => {
     try {
-      const foodData = await getFoodById(id);
-      console.log("Fetched food data:", foodData);
+      setSelectedFoodId(id);
+      const typeBoxElement = document.querySelectorAll(".typebox-list");
+      typeBoxElement.forEach((element) => {
+        element.classList.add("hidden");
+      });
+      const selectedMenu = document.getElementById(`menu-item-${id}`);
+      selectedMenu?.querySelector(".typebox-list")?.classList.remove("hidden");
+
+      setShowTypeBox(true);
     } catch (error) {
       throw new Error(`Failed to fetch food data for id ${id}: ${error}`);
     }
   };
 
   return (
-    <div className="menu-item bg-green-50 p-2 rounded-lg shadow-md">
+    <div
+      className="menu-item bg-green-50 p-2 rounded-lg shadow-md relative"
+      id={`menu-item-${id}`}
+    >
+      {showtTypeBox ? (
+        <TypeBox setCloseTypeBox={setShowTypeBox} foodId={selectedFoodId} />
+      ) : null}
       <img src={imageUrl} alt={name} className="menu-item-image " />
       <div className="menu-item_content px-3 py-2">
         <h2 className="menu-item-name text-xl font-bold mt-2">{name}</h2>

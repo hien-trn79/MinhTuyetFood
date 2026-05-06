@@ -17,9 +17,9 @@ public class AccountService {
         return repo.findAll();
     }
 
-    // [GET /accounts/{accountId}
-    public Account getAccountById(int id) {
-        return repo.findById(id).orElse(null);
+    // [GET /accounts/{accountEmail}
+    public Account findAccountByEmail(String accountEmail) {
+        return repo.findByEmail(accountEmail);
     }
 
     // [POST] /accounts

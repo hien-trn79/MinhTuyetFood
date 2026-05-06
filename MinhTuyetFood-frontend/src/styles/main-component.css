@@ -27,3 +27,9 @@
   height: 200px;
   object-fit: cover;
 }
+
+/* ======= TypeBox.tsx ========= */
+.table_order-input {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}

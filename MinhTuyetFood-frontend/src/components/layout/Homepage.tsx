@@ -11,6 +11,7 @@ export default function Homepage() {
       try {
         const response = await fetch("http://localhost:8080/api/foods");
         const data: Food[] = await response.json();
+        console.log("Fetched foods data:", data);
         setFoods(data);
       } catch (error) {
         console.error("Error fetching foods:", error);

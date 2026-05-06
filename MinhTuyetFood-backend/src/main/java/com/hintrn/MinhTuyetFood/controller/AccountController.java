@@ -23,9 +23,9 @@ public class AccountController {
     }
 
     // [GET] /accounts/{accountId}
-    @GetMapping("/{accountId}")
-    public Account getAccountById(@PathVariable int accountId) {
-        return service.getAccountById(accountId);
+    @GetMapping("/{accountEmail}")
+    public Account getAccountById(@PathVariable String accountEmail) {
+        return service.findAccountByEmail(accountEmail);
     }
 
     // [POST] /accounts

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "../styles/page.css";
+import { redirect } from "react-router";
 
 export default function LoginPage() {
   const [email, setEmail] = useState<string>("");
@@ -7,7 +8,7 @@ export default function LoginPage() {
   const [rememberMe, setRememberMe] = useState<boolean>(false);
   const [togglePassword, setTogglePassword] = useState<boolean>(false);
 
-  const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const loginData = {
@@ -16,7 +17,32 @@ export default function LoginPage() {
       rememberMe: rememberMe,
     };
 
-    console.log("Login data:", loginData);
+    // Send loginData to backend API for authentication
+    const apiUrl = "http://localhost:8080/api/auth/login";
+    try {
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginData),
+      });
+
+      const data = await response.json();
+
+      // save token
+      localStorage.setItem("token", data.token);
+
+      if (response.ok) {
+        // Redirect to dashboard or home page after successful login
+        redirect("/");
+      } else {
+        // Handle login error (e.g., show error message)
+        console.error("Login failed:", data.message);
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+    }
 
     setEmail("");
     setPassword("");

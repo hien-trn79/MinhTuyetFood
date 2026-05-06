@@ -1,7 +1,6 @@
 /* Design Login Page */
 .logo_side {
-  height: 100px;
-  width: 260px;
+  max-width: 260px;
   z-index: 10;
 }
 

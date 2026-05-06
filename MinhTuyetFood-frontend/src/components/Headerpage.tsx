@@ -19,6 +19,7 @@ export default function Headerpage() {
           <NavbarItem link="/menu" text="Menu" />
           <NavbarItem link="/about" text="About Us" />
           <NavbarItem link="/contact" text="Contact" />
+          <NavbarItem link="/orders" text="Orders" />
 
           <div className="account_side">
             {user ? (
