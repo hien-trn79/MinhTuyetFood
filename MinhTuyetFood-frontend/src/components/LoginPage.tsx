@@ -1,12 +1,14 @@
 import { useState } from "react";
 import "../styles/page.css";
-import { redirect } from "react-router";
+import { Link, redirect, useNavigate } from "react-router";
 
 export default function LoginPage() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [rememberMe, setRememberMe] = useState<boolean>(false);
   const [togglePassword, setTogglePassword] = useState<boolean>(false);
+
+  const navigate = useNavigate();
 
   const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -30,15 +32,12 @@ export default function LoginPage() {
 
       const data = await response.json();
 
-      // save token
-      localStorage.setItem("token", data.token);
-
       if (response.ok) {
-        // Redirect to dashboard or home page after successful login
-        redirect("/");
-      } else {
-        // Handle login error (e.g., show error message)
-        console.error("Login failed:", data.message);
+        if (data.statusCode === 200) {
+          const account = data.data;
+          localStorage.setItem("accountEmail", account.accountEmail);
+          navigate("/");
+        }
       }
     } catch (error) {
       console.error("Error during login:", error);
@@ -152,6 +151,15 @@ export default function LoginPage() {
             >
               Login
             </button>
+
+            <div className="form-group moveSignUp my-3">
+              <Link
+                to="/signup"
+                className="form-link text-blue-700 hover:underline"
+              >
+                Don't have an account? Sign up here
+              </Link>
+            </div>
           </form>
         </main>
       </div>

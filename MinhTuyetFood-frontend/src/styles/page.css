@@ -16,3 +16,36 @@
 .form-submit:active {
   transform: scale(0.98);
 }
+
+/* ======== Account Page ========= */
+.account-page {
+  display: grid;
+  grid-template-areas: "summary info";
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+
+.account_summary {
+  grid-area: summary;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+/* ========== Account Info ========= */
+
+.account_info {
+  grid-area: info;
+  background-color: #40eb3a25;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 2px 2px 4px 1px rgba(128, 128, 128, 0.247);
+}
+
+.typeAccount-text {
+  min-width: 5.3vw;
+  box-shadow: 1px 2px 3px 1px #1b018d44;
+}

@@ -24,7 +24,7 @@ public class AccountController {
 
     // [GET] /accounts/{accountId}
     @GetMapping("/{accountEmail}")
-    public Account getAccountById(@PathVariable String accountEmail) {
+    public Account getAccountByEmail(@PathVariable String accountEmail) {
         return service.findAccountByEmail(accountEmail);
     }
 
@@ -35,14 +35,16 @@ public class AccountController {
     }
 
     // [PUT] /accounts/:id
-    @PutMapping
-    public void updateAccount(@RequestBody Account newAccount) {
-        service.updateAccount(newAccount);
+    @PutMapping("/{accountEmail}")
+    public Account updateAccount(@PathVariable String accountEmail, @RequestBody Account newAccount) {
+        Account foundIt = getAccountByEmail(accountEmail);
+            return service.updateAccount(newAccount);
+
     }
 
     // [DELETE] /accounts/{accountId}
-    @DeleteMapping("/{accountId}")
-    public void deleteAccount(@PathVariable int accountId) {
-        service.deleteAccount(accountId);
+    @DeleteMapping("/{accountEmail}")
+    public void deleteAccount(@PathVariable String accountEmail) {
+        service.deleteAccount(accountEmail);
     }
 }

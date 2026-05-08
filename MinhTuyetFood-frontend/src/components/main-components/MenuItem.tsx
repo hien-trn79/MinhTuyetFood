@@ -36,18 +36,18 @@ export default function MenuItem({
 
   return (
     <div
-      className="menu-item bg-green-50 p-2 rounded-lg shadow-md relative"
+      className="menu-item bg-green-100 p-2 rounded-lg shadow-md relative"
       id={`menu-item-${id}`}
     >
       {showtTypeBox ? (
         <TypeBox setCloseTypeBox={setShowTypeBox} foodId={selectedFoodId} />
       ) : null}
-      <img src={imageUrl} alt={name} className="menu-item-image " />
+      <img src={imageUrl} alt={name} className="menu-item-image rounded-lg" />
       <div className="menu-item_content px-3 py-2">
         <h2 className="menu-item-name text-xl font-bold mt-2">{name}</h2>
         <p className="menu-item-description mt-3">{description}</p>
         <p className="menu-item-price text-red-600 font-bold text-right text-xl">
-          ${price.toFixed(2)}
+          ${price}
         </p>
       </div>
       <div className="menu-item_submit" onClick={() => handleSubmit(id)}>

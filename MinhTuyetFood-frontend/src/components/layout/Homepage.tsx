@@ -34,17 +34,16 @@ export default function Homepage() {
 
       <div className="menu">
         {foods ? (
-          foods.map((foodItem: Food) => {
-            return (
-              <MenuItem
-                id={foodItem.foodId}
-                name={foodItem.foodName}
-                description={foodItem.foodDescription || "Delicious food item"}
-                price={foodItem.foodPrice}
-                imageUrl={foodItem.foodImage || "/food-default.jpg"}
-              />
-            );
-          })
+          foods.map((foodItem: Food) => (
+            <MenuItem
+              key={foodItem.foodId}
+              id={foodItem.foodId}
+              name={foodItem.foodName}
+              description={foodItem.foodDescription || "Delicious food item"}
+              price={foodItem.foodPrice}
+              imageUrl={foodItem.foodImage || "/food-default.jpg"}
+            />
+          ))
         ) : (
           <p>Loading...</p>
         )}

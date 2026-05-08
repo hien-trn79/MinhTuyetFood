@@ -1,9 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import NavbarItem from "./header-components/NavbarItem";
+import type { Account } from "../model/account";
+import AccountLogo from "./header-components/AccountLogo";
 
 export default function Headerpage() {
-  const [user, setUser] = useState(null);
+  const [account, setaccount] = useState<Account | null>(null);
+
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    const accountEmail = localStorage.getItem("accountEmail");
+
+    const fetchAccountByEmail = async (email: string) => {
+      try {
+        const response = await fetch(
+          "http://localhost:8080/api/accounts/" + email,
+        );
+        if (response.ok) {
+          const accountData = await response.json();
+          setaccount(accountData);
+        }
+      } catch (error) {
+        console.error("Error fetching account:", error);
+      }
+    };
+
+    fetchAccountByEmail(accountEmail as string);
+  }, []);
 
   return (
     <header className="page-header flex items-center justify-between px-8 py-2 ">
@@ -22,8 +45,8 @@ export default function Headerpage() {
           <NavbarItem link="/orders" text="Orders" />
 
           <div className="account_side">
-            {user ? (
-              <p>Welcome, User!</p>
+            {account ? (
+              <AccountLogo accountEmail={account.accountEmail}/>
             ) : (
               <button className="bg-white text-green-500 font-bold py-2 px-4 rounded-xl hover:bg-gray-200">
                 <Link to="/login">Login</Link>

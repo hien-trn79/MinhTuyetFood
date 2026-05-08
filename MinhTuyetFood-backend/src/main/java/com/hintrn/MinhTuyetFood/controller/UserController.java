@@ -23,8 +23,13 @@ public class UserController {
 
     // [POST] /api/users
     @PostMapping
-    public void addUser(User newUser) {
-        service.addUser(newUser);
+    public String addUser(@RequestBody User newUser) {
+        try {
+            service.addUser(newUser);
+            return "add User successful";
+        } catch (Exception e) {
+            return e.getMessage();
+        }
     }
 
     // [GET] /api/user/{userId}

@@ -16,19 +16,22 @@ public class Food {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // tu dong tang ID
     private Integer foodId;
     private String foodName;
+    private String foodDescription;
     private Integer foodPrice;
     private String foodImage;
 
     public Food() {
         this.foodId = -1;
         this.foodName = "";
+        this.foodDescription = "";
         this.foodPrice = 0;
         this.foodImage = "";
     }
 
-    public Food(Integer foodId, String foodName, Integer foodPrice, String foodImage) {
+    public Food(Integer foodId, String foodName, String foodDescription, Integer foodPrice, String foodImage) {
         this.foodId = foodId;
         this.foodName = foodName;
+        this.foodDescription = foodDescription;
         this.foodPrice = foodPrice;
         this.foodImage = foodImage;
     }
@@ -38,8 +41,9 @@ public class Food {
         return "Food{" +
                 "foodId=" + foodId +
                 ", foodName='" + foodName + '\'' +
-                ", foodImage='" + foodImage + '\'' +
+                ", foodDescription='" + foodDescription + '\'' +
                 ", foodPrice=" + foodPrice +
+                ", foodImage='" + foodImage + '\'' +
                 '}';
     }
 }

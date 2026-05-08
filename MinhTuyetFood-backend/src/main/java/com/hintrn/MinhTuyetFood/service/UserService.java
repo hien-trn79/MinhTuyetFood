@@ -17,7 +17,7 @@ public class UserService {
         return repo.findAll();
     }
 
-    // [POST] /api/staffs
+    // [POST] /api/users
     public void addUser(User newUser) {
         repo.save(newUser);
     }
@@ -27,12 +27,12 @@ public class UserService {
         return repo.findById(userId).orElse(null);
     }
 
-    // [PUT] /api/staffs/{staffId}
+    // [PUT] /api/users/{staffId}
     public void updateUser(User newUser) {
         repo.save(newUser);
     }
 
-    // [DELETE] /api/staffs/{userId}
+    // [DELETE] /api/users/{userId}
     public void deleteUser(int id) {
         repo.deleteById(id);
     }

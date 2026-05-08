@@ -28,12 +28,12 @@ public class AccountService {
     }
 
     // [PUT] /accounts/{accountId}
-    public void updateAccount(Account newAccount) {
-        repo.save(newAccount);
+    public Account updateAccount(Account newAccount) {
+        return repo.save(newAccount);
     }
 
-    // [DELETE] /accounts/{accountId}
-    public void deleteAccount(int accountId) {
-        repo.deleteById(accountId);
+    // [DELETE] /accounts/{accountEmail}
+    public void deleteAccount(String accountEmail) {
+        repo.deleteByEmail(accountEmail);
     }
 }

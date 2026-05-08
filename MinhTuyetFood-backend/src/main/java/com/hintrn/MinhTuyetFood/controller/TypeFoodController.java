@@ -12,7 +12,6 @@ import java.util.List;
 @RequestMapping("/api/typefoods")
 public class TypeFoodController {
 
-
     @Autowired
     TypeFoodService service;
 
